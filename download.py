@@ -7,7 +7,7 @@ from click import argument, command
 from requests import get
 from tqdm import tqdm
 
-from tempfile import TemporaryDirectory, TemporaryFile
+from tempfile import TemporaryDirectory
 from pathlib import Path
 from loguru import logger
 
@@ -59,6 +59,9 @@ def main(*, url: str) -> None:
             {"Testbed"},
         )
         copytree(samples_py.joinpath("Testbed"), "samples", dirs_exist_ok=True)
+        with ibjts.joinpath("API_VersionNum.txt").open(mode="r") as fh:
+            for line in fh:
+                logger.info(line)
 
 
 def _check_directory_contents(path: Path, names: Iterable[str], /) -> None:

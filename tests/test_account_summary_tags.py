@@ -11,10 +11,8 @@ class AccountSummaryTagsTestCase(unittest.TestCase):
     def setUp(self):
         pass
 
-
     def tearDown(self):
         pass
-
 
     def test_all_tags(self):
         print(AccountSummaryTags.AllTags)

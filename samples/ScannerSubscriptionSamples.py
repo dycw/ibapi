@@ -9,11 +9,10 @@ from ibapi.scanner import ScannerSubscription
 
 
 class ScannerSubscriptionSamples(Object):
-
     @staticmethod
     def HotUSStkByVolume():
         #! [hotusvolume]
-        #Hot US stocks by volume
+        # Hot US stocks by volume
         scanSub = ScannerSubscription()
         scanSub.instrument = "STK"
         scanSub.locationCode = "STK.US.MAJOR"
@@ -64,6 +63,7 @@ class ScannerSubscriptionSamples(Object):
         scanSub.scanCode = "COMBO_LATEST_TRADE"
         #! [combolatesttrade]
         return scanSub
+
 
 def Test():
     print(ScannerSubscriptionSamples.HotUSStkByVolume())
