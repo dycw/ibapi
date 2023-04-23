@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from subprocess import check_call
 from shutil import copytree
 from collections.abc import Iterable
 from zipfile import ZipFile
@@ -45,12 +46,19 @@ def main(*, url: str) -> None:
             source := ibjts.joinpath("source"),
             {"cppclient", "JavaClient", "pythonclient"},
         )
+        copytree(source.joinpath("pythonclient"), Path.cwd(), dirs_exist_ok=True)
+        _ = check_call(["git", "checkout", "--", ".gitignore"])
+        _ = Path("README.md").rename("README.IB-API.md")
+        _ = check_call(["git", "checkout", "--", "README.md"])
         _check_directory_contents(
-            source_py := source.joinpath("pythonclient"),
-            {"cppclient", "JavaClient", "pythonclient"},
+            samples := ibjts.joinpath("samples"),
+            {"Cpp", "Java", "Python"},
         )
-        assert 0, list(ibjts.iterdir())
-    pass
+        _check_directory_contents(
+            samples_py := samples.joinpath("Python"),
+            {"Testbed"},
+        )
+        copytree(samples_py.joinpath("Testbed"), "samples", dirs_exist_ok=True)
 
 
 def _check_directory_contents(path: Path, names: Iterable[str], /) -> None:
