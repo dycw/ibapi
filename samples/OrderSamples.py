@@ -1213,7 +1213,7 @@ class OrderSamples:
 
 
 def Test():
-    OrderSamples()  # @UnusedVariable
+    os = OrderSamples()  # @UnusedVariable
 
 
 if "__main__" == __name__:

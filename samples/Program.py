@@ -1,5 +1,5 @@
 """
-Copyright (C) 2023 Interactive Brokers LLC. All rights reserved. This code is subject to the terms
+Copyright (C) 2019 Interactive Brokers LLC. All rights reserved. This code is subject to the terms
  and conditions of the IB API Non-Commercial License or the IB API Commercial License, as applicable.
 """
 
@@ -412,10 +412,6 @@ class TestApp(TestWrapper, TestClient):
             floatMaxString(order.midOffsetAtWhole),
             "MidOffsetAtHalf:",
             floatMaxString(order.midOffsetAtHalf),
-            "FAGroup:",
-            order.faGroup,
-            "FAMethod:",
-            order.faMethod,
         )
 
         order.contract = contract
@@ -1037,10 +1033,6 @@ class TestApp(TestWrapper, TestClient):
         )
         # ! [reqetfticks]
 
-        # ! [yieldbidask]
-        self.reqMktData(1021, ContractSamples.Bond(), "", False, False, [])
-        # ! [yieldbidask]
-
     @printWhenExecuting
     def tickDataOperations_cancel(self):
         # Canceling the market data subscription
@@ -1072,7 +1064,6 @@ class TestApp(TestWrapper, TestClient):
 
         self.cancelMktData(1019)
         self.cancelMktData(1020)
-        self.cancelMktData(1021)
 
     @printWhenExecuting
     def tickOptionComputations_req(self):
@@ -2129,21 +2120,18 @@ class TestApp(TestWrapper, TestClient):
         # ! [reqfundamentaldata]
 
         # ! [fundamentalexamples]
-        self.reqFundamentalData(
-            8002, ContractSamples.USStock(), "ReportSnapshot", []
-        )  # for company overview
-        self.reqFundamentalData(
-            8003, ContractSamples.USStock(), "ReportRatios", []
-        )  # for financial ratios
+        self.reqFundamentalData(8002, ContractSamples.USStock(), "ReportSnapshot", [])
+        # for company overview
+        self.reqFundamentalData(8003, ContractSamples.USStock(), "ReportRatios", [])
+        # for financial ratios
         self.reqFundamentalData(
             8004, ContractSamples.USStock(), "ReportsFinStatements", []
-        )  # for financial statements
-        self.reqFundamentalData(
-            8005, ContractSamples.USStock(), "RESC", []
-        )  # for analyst estimates
-        self.reqFundamentalData(
-            8006, ContractSamples.USStock(), "CalendarReport", []
-        )  # for company calendar
+        )
+        # for financial statements
+        self.reqFundamentalData(8005, ContractSamples.USStock(), "RESC", [])
+        # for analyst estimates
+        self.reqFundamentalData(8006, ContractSamples.USStock(), "CalendarReport", [])
+        # for company calendar
         # ! [fundamentalexamples]
 
     @printWhenExecuting
@@ -2482,10 +2470,26 @@ class TestApp(TestWrapper, TestClient):
         self.requestFA(FaDataTypeEnum.GROUPS)
         # ! [requestfagroups]
 
+        # ! [requestfaprofiles]
+        self.requestFA(FaDataTypeEnum.PROFILES)
+        # ! [requestfaprofiles]
+
         # Replacing FA information - Fill in with the appropriate XML string.
-        # ! [replacefaupdatedgroup]
-        self.replaceFA(1000, FaDataTypeEnum.GROUPS, FaAllocationSamples.FaUpdatedGroup)
-        # ! [replacefaupdatedgroup]
+        # ! [replacefaonegroup]
+        self.replaceFA(1000, FaDataTypeEnum.GROUPS, FaAllocationSamples.FaOneGroup)
+        # ! [replacefaonegroup]
+
+        # ! [replacefatwogroups]
+        self.replaceFA(1001, FaDataTypeEnum.GROUPS, FaAllocationSamples.FaTwoGroups)
+        # ! [replacefatwogroups]
+
+        # ! [replacefaoneprofile]
+        self.replaceFA(1002, FaDataTypeEnum.PROFILES, FaAllocationSamples.FaOneProfile)
+        # ! [replacefaoneprofile]
+
+        # ! [replacefatwoprofiles]
+        self.replaceFA(1003, FaDataTypeEnum.PROFILES, FaAllocationSamples.FaTwoProfiles)
+        # ! [replacefatwoprofiles]
 
         # ! [reqSoftDollarTiers]
         self.reqSoftDollarTiers(14001)
@@ -2632,24 +2636,31 @@ class TestApp(TestWrapper, TestClient):
         )
         # ! [faorderoneaccount]
 
-        # ! [faordergroup]
-        faOrderGroup = OrderSamples.LimitOrder("BUY", 200, 10)
-        faOrderGroup.faGroup = "MyTestGroup1"
-        faOrderGroup.faMethod = "AvailableEquity"
+        # ! [faordergroupequalquantity]
+        faOrderGroupEQ = OrderSamples.LimitOrder("SELL", 200, 2000)
+        faOrderGroupEQ.faGroup = "Group_Equal_Quantity"
+        faOrderGroupEQ.faMethod = "EqualQuantity"
         self.placeOrder(
-            self.nextOrderId(), ContractSamples.USStockAtSmart(), faOrderGroup
+            self.nextOrderId(), ContractSamples.SimpleFuture(), faOrderGroupEQ
         )
-        # ! [faordergroup]
+        # ! [faordergroupequalquantity]
 
-        # ! [faorderuserdefinedgroup]
-        faOrderUserDefinedGroup = OrderSamples.LimitOrder("BUY", 200, 10)
-        faOrderUserDefinedGroup.faGroup = "MyTestProfile1"
+        # ! [faordergrouppctchange]
+        faOrderGroupPC = OrderSamples.MarketOrder("BUY", 0)
+        # You should not specify any order quantity for PctChange allocation method
+        faOrderGroupPC.faGroup = "Pct_Change"
+        faOrderGroupPC.faMethod = "PctChange"
+        faOrderGroupPC.faPercentage = "100"
+        self.placeOrder(self.nextOrderId(), ContractSamples.EurGbpFx(), faOrderGroupPC)
+        # ! [faordergrouppctchange]
+
+        # ! [faorderprofile]
+        faOrderProfile = OrderSamples.LimitOrder("BUY", 200, 100)
+        faOrderProfile.faProfile = "Percent_60_40"
         self.placeOrder(
-            self.nextOrderId(),
-            ContractSamples.USStockAtSmart(),
-            faOrderUserDefinedGroup,
+            self.nextOrderId(), ContractSamples.EuropeanStock(), faOrderProfile
         )
-        # ! [faorderuserdefinedgroup]
+        # ! [faorderprofile]
 
         # ! [modelorder]
         modelOrder = OrderSamples.LimitOrder("BUY", 200, 100)

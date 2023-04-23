@@ -372,7 +372,7 @@ class AvailableAlgoParams(Object):
 
 
 def Test():
-    AvailableAlgoParams()  # @UnusedVariable
+    av = AvailableAlgoParams()  # @UnusedVariable
 
 
 if "__main__" == __name__:

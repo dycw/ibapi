@@ -93,7 +93,7 @@ class ContractSamples:
     def Bond():
         #! [bond]
         contract = Contract()
-        contract.conId = 456467716
+        contract.conId = 15960357
         contract.exchange = "SMART"
         #! [bond]
         return contract
