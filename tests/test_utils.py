@@ -44,7 +44,7 @@ class UtilsTestCase(unittest.TestCase):
             def m(self):
                 self.n += 2
 
-        B()
+        o = B()
         # import code; code.interact(local=locals())
 
 
