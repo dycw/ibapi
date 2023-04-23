@@ -5,8 +5,8 @@ Copyright (C) 2023 Interactive Brokers LLC. All rights reserved. This code is su
 
 from ibapi import order_condition
 from ibapi.object_implem import Object
-from ibapi.utils import * # @UnusedWildImport
-from ibapi.server_versions import * # @UnusedWildImport
+from ibapi.utils import *  # @UnusedWildImport
+from ibapi.server_versions import *  # @UnusedWildImport
 from ibapi.order import OrderComboLeg
 from ibapi.contract import ComboLeg
 from ibapi.tag_value import TagValue
@@ -100,14 +100,14 @@ class OrderDecoder(Object):
         self.order.goodAfterTime = decode(str, fields)
 
     def skipSharesAllocation(self, fields):
-        _sharesAllocation = decode(str, fields) # deprecated
+        _sharesAllocation = decode(str, fields)  # deprecated
 
     def decodeFAParams(self, fields):
         self.order.faGroup = decode(str, fields)
         self.order.faMethod = decode(str, fields)
         self.order.faPercentage = decode(str, fields)
         if self.serverVersion < MIN_SERVER_VER_FA_PROFILE_DESUPPORT:
-            _faProfile = decode(str, fields) # skip deprecated faProfile field
+            _faProfile = decode(str, fields)  # skip deprecated faProfile field
 
     def decodeModelCode(self, fields):
         if self.serverVersion >= MIN_SERVER_VER_MODELS_SUPPORT:
@@ -164,20 +164,19 @@ class OrderDecoder(Object):
         self.order.ocaType = decode(int, fields)
 
     def skipETradeOnly(self, fields):
-        _eTradeOnly = decode(bool, fields) # deprecated
+        _eTradeOnly = decode(bool, fields)  # deprecated
 
     def skipFirmQuoteOnly(self, fields):
-        _firmQuoteOnly = decode(bool, fields) #` deprecated
+        _firmQuoteOnly = decode(bool, fields)  # ` deprecated
 
     def skipNbboPriceCap(self, fields):
-        _nbboPriceCap = decode(float, fields, SHOW_UNSET) # deprecated
+        _nbboPriceCap = decode(float, fields, SHOW_UNSET)  # deprecated
 
     def decodeParentId(self, fields):
         self.order.parentId = decode(int, fields)
 
     def decodeTriggerMethod(self, fields):
         self.order.triggerMethod = decode(int, fields)
-
 
     def decodeVolOrderParams(self, fields, readOpenOrderAttribs):
         self.order.volatility = decode(float, fields, SHOW_UNSET)
@@ -239,7 +238,6 @@ class OrderDecoder(Object):
                     orderComboLeg.price = decode(float, fields, SHOW_UNSET)
                     self.order.orderComboLegs.append(orderComboLeg)
 
-
     def decodeSmartComboRoutingParams(self, fields):
         if self.version >= 26:
             smartComboRoutingParamsCount = decode(int, fields)
@@ -261,8 +259,11 @@ class OrderDecoder(Object):
 
         self.order.scalePriceIncrement = decode(float, fields, SHOW_UNSET)
 
-        if self.version >= 28 and self.order.scalePriceIncrement != UNSET_DOUBLE \
-                and self.order.scalePriceIncrement > 0.0:
+        if (
+            self.version >= 28
+            and self.order.scalePriceIncrement != UNSET_DOUBLE
+            and self.order.scalePriceIncrement > 0.0
+        ):
             self.order.scalePriceAdjustValue = decode(float, fields, SHOW_UNSET)
             self.order.scalePriceAdjustInterval = decode(int, fields, SHOW_UNSET)
             self.order.scaleProfitOffset = decode(float, fields, SHOW_UNSET)
@@ -270,7 +271,6 @@ class OrderDecoder(Object):
             self.order.scaleInitPosition = decode(int, fields, SHOW_UNSET)
             self.order.scaleInitFillQty = decode(int, fields, SHOW_UNSET)
             self.order.scaleRandomPercent = decode(bool, fields)
-
 
     def decodeHedgeParams(self, fields):
         if self.version >= 24:
@@ -368,7 +368,6 @@ class OrderDecoder(Object):
                 self.order.conditionsIgnoreRth = decode(bool, fields)
                 self.order.conditionsCancelOrder = decode(bool, fields)
 
-
     def decodeAdjustedOrderParams(self, fields):
         if self.serverVersion >= MIN_SERVER_VER_PEGGED_TO_BENCHMARK:
             self.order.adjustedOrderType = decode(str, fields)
@@ -380,8 +379,8 @@ class OrderDecoder(Object):
             self.order.adjustableTrailingUnit = decode(int, fields)
 
     def decodeStopPriceAndLmtPriceOffset(self, fields):
-            self.order.trailStopPrice = decode(float, fields)
-            self.order.lmtPriceOffset = decode(float, fields)
+        self.order.trailStopPrice = decode(float, fields)
+        self.order.lmtPriceOffset = decode(float, fields)
 
     def decodeSoftDollarTier(self, fields):
         if self.serverVersion >= MIN_SERVER_VER_SOFT_DOLLAR_TIER:
@@ -392,11 +391,11 @@ class OrderDecoder(Object):
 
     def decodeCashQty(self, fields):
         if self.serverVersion >= MIN_SERVER_VER_CASH_QTY:
-            self.order.cashQty = decode(float,fields)
+            self.order.cashQty = decode(float, fields)
 
     def decodeDontUseAutoPriceForHedge(self, fields):
         if self.serverVersion >= MIN_SERVER_VER_AUTO_PRICE_FOR_HEDGE:
-            self.order.dontUseAutoPriceForHedge = decode(bool,fields)
+            self.order.dontUseAutoPriceForHedge = decode(bool, fields)
 
     def decodeIsOmsContainers(self, fields):
         if self.serverVersion >= MIN_SERVER_VER_ORDER_CONTAINER:
@@ -415,7 +414,7 @@ class OrderDecoder(Object):
     def decodeRefFuturesConId(self, fields):
         self.order.refFuturesConId = decode(int, fields)
 
-    def decodeAutoCancelParent(self, fields, minVersionAutoCancelParent = MIN_CLIENT_VER):
+    def decodeAutoCancelParent(self, fields, minVersionAutoCancelParent=MIN_CLIENT_VER):
         if self.serverVersion >= minVersionAutoCancelParent:
             self.order.autoCancelParent = decode(bool, fields)
 

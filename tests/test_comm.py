@@ -12,10 +12,8 @@ class CommTestCase(unittest.TestCase):
     def setUp(self):
         pass
 
-
     def tearDown(self):
         pass
-
 
     def test_make_msg(self):
         text = "ABCD"
@@ -26,7 +24,6 @@ class CommTestCase(unittest.TestCase):
         self.assertEqual(size, len(text), "msg size not good")
         self.assertEqual(msg[4:].decode(), text, "msg payload not good")
 
-
     def test_make_field(self):
         text = "ABCD"
         field = comm.make_field(text)
@@ -34,7 +31,6 @@ class CommTestCase(unittest.TestCase):
         self.assertEqual(field[-1], "\0", "terminator not good")
         self.assertEqual(len(field[0:-1]), len(text), "payload size not good")
         self.assertEqual(field[0:-1], text, "payload not good")
-
 
     def test_read_msg(self):
         text = "ABCD"
@@ -45,7 +41,6 @@ class CommTestCase(unittest.TestCase):
         self.assertEqual(size, len(text), "msg size not good")
         self.assertEqual(text2.decode(), text, "msg payload not good")
         self.assertEqual(len(rest), 0, "there should be no remainder msg")
-
 
     def test_readFields(self):
         text1 = "ABCD"
