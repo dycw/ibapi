@@ -20,4 +20,5 @@ setup(
     author="IBG LLC",
     author_email="dnastase@interactivebrokers.com",
     description="Python IB API",
+    package_data={"ibapi": ["py.typed"]},
 )
