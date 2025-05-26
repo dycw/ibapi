@@ -13,4 +13,4 @@ def get_version_string():
 
 
 __version__ = get_version_string()
-__qrt_version__ = "1.0.2"
+__qrt_version__ = "1.0.3"
