@@ -6,7 +6,7 @@ and conditions of the IB API Non-Commercial License or the IB API Commercial Lic
 Simple class mapping a tag to a value. Both of them are strings.
 They are used in a list to convey extra info with the requests.
 """
-from __future__ import annotations
+
 
 from ibapi.object_implem import Object
 

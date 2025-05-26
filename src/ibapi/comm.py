@@ -4,8 +4,6 @@
 This module has tools for implementing the IB low level messaging.
 """
 
-from __future__ import annotations
-
 import logging
 import struct
 import sys

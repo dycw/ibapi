@@ -18,12 +18,12 @@ dependencies = []
 name = "dycw-ibapi"
 readme = "README.md"
 requires-python = ">= 3.12"
-version = "1.0.1"
+version = "1.0.2"
 
 # bump-my-version
 [tool.bumpversion]
 allow_dirty = true
-current_version = "1.0.1"
+current_version = "1.0.2"
 
 [[tool.bumpversion.files]]
 filename = "src/ibapi/__init__.py"
@@ -187,6 +187,3 @@ select = [
 
 [tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "all"
-
-[tool.ruff.lint.isort]
-required-imports = ["from __future__ import annotations"]

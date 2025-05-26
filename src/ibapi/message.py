@@ -7,7 +7,7 @@ High level IB message info.
 """
 
 # field types
-from __future__ import annotations
+
 
 INT = 1
 STR = 2

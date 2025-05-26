@@ -15,44 +15,38 @@ server and client.
 
 """
 
-from __future__ import annotations
-
 import logging
-from typing import TYPE_CHECKING
+from decimal import Decimal
 
+from ibapi.commission_report import CommissionReport
+from ibapi.common import (
+    BarData,
+    FaDataType,
+    HistogramData,
+    ListOfContractDescription,
+    ListOfDepthExchanges,
+    ListOfFamilyCode,
+    ListOfHistoricalSessions,
+    ListOfHistoricalTick,
+    ListOfHistoricalTickBidAsk,
+    ListOfHistoricalTickLast,
+    ListOfNewsProviders,
+    ListOfPriceIncrements,
+    OrderId,
+    SetOfFloat,
+    SetOfString,
+    SmartComponentMap,
+    TickAttrib,
+    TickAttribBidAsk,
+    TickAttribLast,
+    TickerId,
+)
+from ibapi.contract import Contract, ContractDetails, DeltaNeutralContract
+from ibapi.execution import Execution
+from ibapi.order import Order
+from ibapi.order_state import OrderState
+from ibapi.ticktype import TickType
 from ibapi.utils import current_fn_name, log_
-
-if TYPE_CHECKING:
-    from decimal import Decimal
-
-    from ibapi.commission_report import CommissionReport
-    from ibapi.common import (
-        BarData,
-        FaDataType,
-        HistogramData,
-        ListOfContractDescription,
-        ListOfDepthExchanges,
-        ListOfFamilyCode,
-        ListOfHistoricalSessions,
-        ListOfHistoricalTick,
-        ListOfHistoricalTickBidAsk,
-        ListOfHistoricalTickLast,
-        ListOfNewsProviders,
-        ListOfPriceIncrements,
-        OrderId,
-        SetOfFloat,
-        SetOfString,
-        SmartComponentMap,
-        TickAttrib,
-        TickAttribBidAsk,
-        TickAttribLast,
-        TickerId,
-    )
-    from ibapi.contract import Contract, ContractDetails, DeltaNeutralContract
-    from ibapi.execution import Execution
-    from ibapi.order import Order
-    from ibapi.order_state import OrderState
-    from ibapi.ticktype import TickType
 
 logger = logging.getLogger(__name__)
 

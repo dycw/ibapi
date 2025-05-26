@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 """Copyright (C) 2023 Interactive Brokers LLC. All rights reserved. This code is subject to the terms
 and conditions of the IB API Non-Commercial License or the IB API Commercial License, as applicable.
 """
@@ -16,4 +13,4 @@ def get_version_string():
 
 
 __version__ = get_version_string()
-__qrt_version__ = "1.0.1"
+__qrt_version__ = "1.0.2"

@@ -12,7 +12,7 @@ The known server versions.
 # MIN_SERVER_VER_SSHORT_COMBO_LEGS    = 35
 # MIN_SERVER_VER_WHAT_IF_ORDERS       = 36
 # MIN_SERVER_VER_CONTRACT_CONID       = 37
-from __future__ import annotations
+
 
 MIN_SERVER_VER_PTA_ORDERS = 39
 MIN_SERVER_VER_FUNDAMENTAL_DATA = 40

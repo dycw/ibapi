@@ -3,7 +3,6 @@ and conditions of the IB API Non-Commercial License or the IB API Commercial Lic
 """
 
 # TWS New Bulletins constants
-from __future__ import annotations
 
 NEWS_MSG = 1  # standard IB news bulleting message
 EXCHANGE_AVAIL_MSG = (

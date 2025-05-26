@@ -2,8 +2,6 @@
 and conditions of the IB API Non-Commercial License or the IB API Commercial License, as applicable.
 """
 
-from __future__ import annotations
-
 from ibapi.const import UNSET_DECIMAL, UNSET_INTEGER
 from ibapi.enum_implem import Enum
 from ibapi.object_implem import Object

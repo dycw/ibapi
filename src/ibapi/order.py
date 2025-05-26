@@ -2,8 +2,6 @@
 and conditions of the IB API Non-Commercial License or the IB API Commercial License, as applicable.
 """
 
-from __future__ import annotations
-
 from ibapi.const import DOUBLE_INFINITY, UNSET_DECIMAL, UNSET_DOUBLE, UNSET_INTEGER
 from ibapi.object_implem import Object
 from ibapi.softdollartier import SoftDollarTier

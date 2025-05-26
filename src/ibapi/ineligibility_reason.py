@@ -5,7 +5,7 @@ and conditions of the IB API Non-Commercial License or the IB API Commercial Lic
 """
 Simple class for ineligibility reason
 """
-from __future__ import annotations
+
 
 from ibapi.object_implem import Object
 

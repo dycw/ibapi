@@ -5,8 +5,6 @@ This is the interface that will need to be overloaded by the customer so
 that his/her code can receive info from the TWS/IBGW.
 """
 
-from __future__ import annotations
-
 
 class CodeMsgPair:
     def __init__(self, code, msg) -> None:
