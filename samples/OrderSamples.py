@@ -3,7 +3,6 @@ Copyright (C) 2019 Interactive Brokers LLC. All rights reserved. This code is su
  and conditions of the IB API Non-Commercial License or the IB API Commercial License, as applicable.
 """
 
-
 from ibapi.order import OrderComboLeg, Order, COMPETE_AGAINST_BEST_OFFSET_UP_TO_MID
 from ibapi.common import *  # @UnusedWildImport
 from ibapi.tag_value import TagValue
@@ -12,7 +11,6 @@ from ibapi.order_condition import *  # @UnusedWildImport
 
 
 class OrderSamples:
-
     """<summary>
     #/ An auction order is entered into the electronic trading system during the pre-market opening period for execution at the
     #/ Calculated Opening Price (COP). If your order is not filled on the open, the order is re-submitted as a limit order with

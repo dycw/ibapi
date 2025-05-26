@@ -3,7 +3,6 @@ Copyright (C) 2019 Interactive Brokers LLC. All rights reserved. This code is su
  and conditions of the IB API Non-Commercial License or the IB API Commercial License, as applicable.
 """
 
-
 """
 The main class to use from API user's point of view.
 It takes care of almost everything:
@@ -401,9 +400,7 @@ class EClient(object):
 
             # send contract fields
             if self.serverVersion() >= MIN_SERVER_VER_REQ_MKT_DATA_CONID:
-                flds += [
-                    make_field(contract.conId),
-                ]
+                flds += [make_field(contract.conId)]
 
             flds += [
                 make_field(contract.symbol),
@@ -419,16 +416,12 @@ class EClient(object):
             ]  # srv v2 and above
 
             if self.serverVersion() >= MIN_SERVER_VER_TRADING_CLASS:
-                flds += [
-                    make_field(contract.tradingClass),
-                ]
+                flds += [make_field(contract.tradingClass)]
 
             # Send combo legs for BAG requests (srv v8 and above)
             if contract.secType == "BAG":
                 comboLegsCount = len(contract.comboLegs) if contract.comboLegs else 0
-                flds += [
-                    make_field(comboLegsCount),
-                ]
+                flds += [make_field(comboLegsCount)]
                 for comboLeg in contract.comboLegs:
                     flds += [
                         make_field(comboLeg.conId),
@@ -446,9 +439,7 @@ class EClient(object):
                         make_field(contract.deltaNeutralContract.price),
                     ]
                 else:
-                    flds += [
-                        make_field(False),
-                    ]
+                    flds += [make_field(False)]
 
             flds += [
                 make_field(genericTickList),  # srv v31 and above
@@ -456,9 +447,7 @@ class EClient(object):
             ]  # srv v35 and above
 
             if self.serverVersion() >= MIN_SERVER_VER_REQ_SMART_COMPONENTS:
-                flds += [
-                    make_field(regulatorySnapshot),
-                ]
+                flds += [make_field(regulatorySnapshot)]
 
             # send mktDataOptions parameter
             if self.serverVersion() >= MIN_SERVER_VER_LINKING:
@@ -466,9 +455,7 @@ class EClient(object):
                 if mktDataOptions:
                     raise NotImplementedError("not supported")
                 mktDataOptionsStr = ""
-                flds += [
-                    make_field(mktDataOptionsStr),
-                ]
+                flds += [make_field(mktDataOptionsStr)]
 
             msg = "".join(flds)
 
@@ -617,8 +604,7 @@ class EClient(object):
                 NO_VALID_ID,
                 UPDATE_TWS.code(),
                 UPDATE_TWS.msg()
-                + " It does not support ignoreSize and numberOfTicks parameters "
-                "in tick-by-tick data requests.",
+                + " It does not support ignoreSize and numberOfTicks parameters in tick-by-tick data requests.",
             )
             return
 
@@ -738,9 +724,7 @@ class EClient(object):
                 make_field(contract.localSymbol),
             ]
             if self.serverVersion() >= MIN_SERVER_VER_TRADING_CLASS:
-                flds += [
-                    make_field(contract.tradingClass),
-                ]
+                flds += [make_field(contract.tradingClass)]
             flds += [make_field(optionPrice), make_field(underPrice)]
 
             if self.serverVersion() >= MIN_SERVER_VER_LINKING:
@@ -854,9 +838,7 @@ class EClient(object):
                 make_field(contract.localSymbol),
             ]
             if self.serverVersion() >= MIN_SERVER_VER_TRADING_CLASS:
-                flds += [
-                    make_field(contract.tradingClass),
-                ]
+                flds += [make_field(contract.tradingClass)]
             flds += [make_field(volatility), make_field(underPrice)]
 
             if self.serverVersion() >= MIN_SERVER_VER_LINKING:
@@ -958,9 +940,7 @@ class EClient(object):
             ]
             # send contract fields
             if self.serverVersion() >= MIN_SERVER_VER_TRADING_CLASS:
-                flds += [
-                    make_field(contract.conId),
-                ]
+                flds += [make_field(contract.conId)]
             flds += [
                 make_field(contract.symbol),
                 make_field(contract.secType),
@@ -973,9 +953,7 @@ class EClient(object):
                 make_field(contract.localSymbol),
             ]
             if self.serverVersion() >= MIN_SERVER_VER_TRADING_CLASS:
-                flds += [
-                    make_field(contract.tradingClass),
-                ]
+                flds += [make_field(contract.tradingClass)]
             flds += [
                 make_field(exerciseAction),
                 make_field(exerciseQuantity),
@@ -2417,9 +2395,7 @@ class EClient(object):
             flds += [make_field(OUT.REQ_EXECUTIONS), make_field(VERSION)]
 
             if self.serverVersion() >= MIN_SERVER_VER_EXECUTION_DATA_CHAIN:
-                flds += [
-                    make_field(reqId),
-                ]
+                flds += [make_field(reqId)]
 
             # Send the execution rpt filter data (srv v9 and above)
             flds += [
@@ -2508,9 +2484,7 @@ class EClient(object):
             flds += [make_field(OUT.REQ_CONTRACT_DATA), make_field(VERSION)]
 
             if self.serverVersion() >= MIN_SERVER_VER_CONTRACT_DATA_CHAIN:
-                flds += [
-                    make_field(reqId),
-                ]
+                flds += [make_field(reqId)]
 
             # send contract fields
             flds += [
@@ -2533,29 +2507,21 @@ class EClient(object):
                     contract.exchange == "BEST" or contract.exchange == "SMART"
                 ):
                     flds += [
-                        make_field(contract.exchange + ":" + contract.primaryExchange),
+                        make_field(contract.exchange + ":" + contract.primaryExchange)
                     ]
                 else:
-                    flds += [
-                        make_field(contract.exchange),
-                    ]
+                    flds += [make_field(contract.exchange)]
 
             flds += [make_field(contract.currency), make_field(contract.localSymbol)]
             if self.serverVersion() >= MIN_SERVER_VER_TRADING_CLASS:
-                flds += [
-                    make_field(contract.tradingClass),
-                ]
-            flds += [
-                make_field(contract.includeExpired),
-            ]  # srv v31 and above
+                flds += [make_field(contract.tradingClass)]
+            flds += [make_field(contract.includeExpired)]  # srv v31 and above
 
             if self.serverVersion() >= MIN_SERVER_VER_SEC_ID_TYPE:
                 flds += [make_field(contract.secIdType), make_field(contract.secId)]
 
             if self.serverVersion() >= MIN_SERVER_VER_BOND_ISSUERID:
-                flds += [
-                    make_field(contract.issuerId),
-                ]
+                flds += [make_field(contract.issuerId)]
 
             msg = "".join(flds)
 
@@ -2665,9 +2631,7 @@ class EClient(object):
 
             # send contract fields
             if self.serverVersion() >= MIN_SERVER_VER_TRADING_CLASS:
-                flds += [
-                    make_field(contract.conId),
-                ]
+                flds += [make_field(contract.conId)]
             flds += [
                 make_field(contract.symbol),
                 make_field(contract.secType),
@@ -2678,23 +2642,15 @@ class EClient(object):
                 make_field(contract.exchange),
             ]
             if self.serverVersion() >= MIN_SERVER_VER_MKT_DEPTH_PRIM_EXCHANGE:
-                flds += [
-                    make_field(contract.primaryExchange),
-                ]
+                flds += [make_field(contract.primaryExchange)]
             flds += [make_field(contract.currency), make_field(contract.localSymbol)]
             if self.serverVersion() >= MIN_SERVER_VER_TRADING_CLASS:
-                flds += [
-                    make_field(contract.tradingClass),
-                ]
+                flds += [make_field(contract.tradingClass)]
 
-            flds += [
-                make_field(numRows),
-            ]  # srv v19 and above
+            flds += [make_field(numRows)]  # srv v19 and above
 
             if self.serverVersion() >= MIN_SERVER_VER_SMART_DEPTH:
-                flds += [
-                    make_field(isSmartDepth),
-                ]
+                flds += [make_field(isSmartDepth)]
 
             # send mktDepthOptions parameter
             if self.serverVersion() >= MIN_SERVER_VER_LINKING:
@@ -2702,9 +2658,7 @@ class EClient(object):
                 if mktDepthOptions:
                     raise NotImplementedError("not supported")
                 mktDataOptionsStr = ""
-                flds += [
-                    make_field(mktDataOptionsStr),
-                ]
+                flds += [make_field(mktDataOptionsStr)]
 
             msg = "".join(flds)
 
@@ -2980,24 +2934,16 @@ class EClient(object):
 
             # send req mkt data msg
             flds = []
-            flds += [
-                make_field(OUT.REQ_HISTORICAL_DATA),
-            ]
+            flds += [make_field(OUT.REQ_HISTORICAL_DATA)]
 
             if self.serverVersion() < MIN_SERVER_VER_SYNT_REALTIME_BARS:
-                flds += [
-                    make_field(VERSION),
-                ]
+                flds += [make_field(VERSION)]
 
-            flds += [
-                make_field(reqId),
-            ]
+            flds += [make_field(reqId)]
 
             # send contract fields
             if self.serverVersion() >= MIN_SERVER_VER_TRADING_CLASS:
-                flds += [
-                    make_field(contract.conId),
-                ]
+                flds += [make_field(contract.conId)]
             flds += [
                 make_field(contract.symbol),
                 make_field(contract.secType),
@@ -3011,9 +2957,7 @@ class EClient(object):
                 make_field(contract.localSymbol),
             ]
             if self.serverVersion() >= MIN_SERVER_VER_TRADING_CLASS:
-                flds += [
-                    make_field(contract.tradingClass),
-                ]
+                flds += [make_field(contract.tradingClass)]
             flds += [
                 make_field(contract.includeExpired),  # srv v31 and above
                 make_field(endDateTime),  # srv v20 and above
@@ -3026,9 +2970,7 @@ class EClient(object):
 
             # Send combo legs for BAG requests
             if contract.secType == "BAG":
-                flds += [
-                    make_field(len(contract.comboLegs)),
-                ]
+                flds += [make_field(len(contract.comboLegs))]
                 for comboLeg in contract.comboLegs:
                     flds += [
                         make_field(comboLeg.conId),
@@ -3038,9 +2980,7 @@ class EClient(object):
                     ]
 
             if self.serverVersion() >= MIN_SERVER_VER_SYNT_REALTIME_BARS:
-                flds += [
-                    make_field(keepUpToDate),
-                ]
+                flds += [make_field(keepUpToDate)]
 
             # send chartOptions parameter
             if self.serverVersion() >= MIN_SERVER_VER_LINKING:
@@ -3048,9 +2988,7 @@ class EClient(object):
                 if chartOptions:
                     for tagValue in chartOptions:
                         chartOptionsStr += str(tagValue)
-                flds += [
-                    make_field(chartOptionsStr),
-                ]
+                flds += [make_field(chartOptionsStr)]
 
             msg = "".join(flds)
 
@@ -3282,9 +3220,7 @@ class EClient(object):
             if miscOptions:
                 for tagValue in miscOptions:
                     miscOptionsString += str(tagValue)
-            flds += [
-                make_field(miscOptionsString),
-            ]
+            flds += [make_field(miscOptionsString)]
 
             msg = "".join(flds)
 
@@ -3394,9 +3330,7 @@ class EClient(object):
                 if scannerSubscriptionOptions:
                     for tagValueOpt in scannerSubscriptionOptions:
                         scannerSubscriptionOptionsStr += str(tagValueOpt)
-                flds += [
-                    make_field(scannerSubscriptionOptionsStr),
-                ]
+                flds += [make_field(scannerSubscriptionOptionsStr)]
 
             msg = "".join(flds)
 
@@ -3492,9 +3426,7 @@ class EClient(object):
 
             # send contract fields
             if self.serverVersion() >= MIN_SERVER_VER_TRADING_CLASS:
-                flds += [
-                    make_field(contract.conId),
-                ]
+                flds += [make_field(contract.conId)]
             flds += [
                 make_field(contract.symbol),
                 make_field(contract.secType),
@@ -3508,9 +3440,7 @@ class EClient(object):
                 make_field(contract.localSymbol),
             ]
             if self.serverVersion() >= MIN_SERVER_VER_TRADING_CLASS:
-                flds += [
-                    make_field(contract.tradingClass),
-                ]
+                flds += [make_field(contract.tradingClass)]
             flds += [make_field(barSize), make_field(whatToShow), make_field(useRTH)]
 
             # send realTimeBarsOptions parameter
@@ -3519,9 +3449,7 @@ class EClient(object):
                 if realTimeBarsOptions:
                     for tagValueOpt in realTimeBarsOptions:
                         realTimeBarsOptionsStr += str(tagValueOpt)
-                flds += [
-                    make_field(realTimeBarsOptionsStr),
-                ]
+                flds += [make_field(realTimeBarsOptionsStr)]
 
             msg = "".join(flds)
 
@@ -3623,9 +3551,7 @@ class EClient(object):
 
             # send contract fields
             if self.serverVersion() >= MIN_SERVER_VER_TRADING_CLASS:
-                flds += [
-                    make_field(contract.conId),
-                ]
+                flds += [make_field(contract.conId)]
             flds += [
                 make_field(contract.symbol),
                 make_field(contract.secType),
@@ -3743,9 +3669,7 @@ class EClient(object):
                 if newsArticleOptions:
                     for tagValue in newsArticleOptions:
                         newsArticleOptionsStr += str(tagValue)
-                flds += [
-                    make_field(newsArticleOptionsStr),
-                ]
+                flds += [make_field(newsArticleOptionsStr)]
 
             msg = "".join(flds)
 
@@ -3798,9 +3722,7 @@ class EClient(object):
                 if historicalNewsOptions:
                     for tagValue in historicalNewsOptionsStr:
                         historicalNewsOptionsStr += str(tagValue)
-                flds += [
-                    make_field(historicalNewsOptionsStr),
-                ]
+                flds += [make_field(historicalNewsOptionsStr)]
 
             msg = "".join(flds)
 

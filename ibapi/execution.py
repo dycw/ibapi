@@ -3,7 +3,6 @@ Copyright (C) 2019 Interactive Brokers LLC. All rights reserved. This code is su
  and conditions of the IB API Non-Commercial License or the IB API Commercial License, as applicable.
 """
 
-
 from ibapi.object_implem import Object
 from ibapi.common import UNSET_DECIMAL
 from ibapi.utils import decimalMaxString
@@ -34,9 +33,7 @@ class Execution(Object):
 
     def __str__(self):
         return (
-            "ExecId: %s, Time: %s, Account: %s, Exchange: %s, Side: %s, Shares: %s, Price: %s, PermId: %s, "
-            "ClientId: %s, OrderId: %s, Liquidation: %s, CumQty: %s, AvgPrice: %s, OrderRef: %s, EvRule: %s, "
-            "EvMultiplier: %s, ModelCode: %s, LastLiquidity: %s"
+            "ExecId: %s, Time: %s, Account: %s, Exchange: %s, Side: %s, Shares: %s, Price: %s, PermId: %s, ClientId: %s, OrderId: %s, Liquidation: %s, CumQty: %s, AvgPrice: %s, OrderRef: %s, EvRule: %s, EvMultiplier: %s, ModelCode: %s, LastLiquidity: %s"
             % (
                 self.execId,
                 self.time,

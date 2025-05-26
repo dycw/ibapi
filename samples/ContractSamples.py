@@ -7,7 +7,6 @@ from ibapi.contract import *  # @UnusedWildImport
 
 
 class ContractSamples:
-
     """Usually, the easiest way to define a Stock/CASH contract is through
     these four attributes."""
 

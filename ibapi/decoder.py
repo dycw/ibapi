@@ -1478,9 +1478,7 @@ class Decoder(Object):
         IN.ACCT_VALUE: HandleInfo(wrap=EWrapper.updateAccountValue),
         IN.PORTFOLIO_VALUE: HandleInfo(proc=processPortfolioValueMsg),
         IN.ACCT_UPDATE_TIME: HandleInfo(wrap=EWrapper.updateAccountTime),
-        IN.NEXT_VALID_ID: HandleInfo(
-            wrap=EWrapper.nextValidId,
-        ),
+        IN.NEXT_VALID_ID: HandleInfo(wrap=EWrapper.nextValidId),
         IN.CONTRACT_DATA: HandleInfo(proc=processContractDataMsg),
         IN.EXECUTION_DATA: HandleInfo(proc=processExecutionDataMsg),
         IN.MARKET_DEPTH: HandleInfo(proc=processMarketDepthMsg),

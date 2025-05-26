@@ -14,9 +14,8 @@ class FaAllocationSamples(Object):
             "<ListOfGroups>",
             "<Group>",
             "<name>Equal_Quantity</name>",
-            '<ListOfAccts varName="list">'
+            '<ListOfAccts varName="list">',
             # Replace with your own accountIds
-            ,
             "<String>DU119915</String>",
             "<String>DU119916</String>",
             "</ListOfAccts>",
@@ -34,9 +33,8 @@ class FaAllocationSamples(Object):
             "<ListOfGroups>",
             "<Group>",
             "<name>Equal_Quantity</name>",
-            '<ListOfAccts varName="list">'
+            '<ListOfAccts varName="list">',
             # Replace with your own accountIds
-            ,
             "<String>DU119915</String>",
             "<String>DU119916</String>",
             "</ListOfAccts>",
@@ -44,9 +42,8 @@ class FaAllocationSamples(Object):
             "</Group>",
             "<Group>",
             "<name>Pct_Change</name>",
-            '<ListOfAccts varName="list">'
+            '<ListOfAccts varName="list">',
             # Replace with your own accountIds
-            ,
             "<String>DU119915</String>",
             "<String>DU119916</String>",
             "</ListOfAccts>",
@@ -66,15 +63,13 @@ class FaAllocationSamples(Object):
             "<name>Percent_60_40</name>",
             "<type>1</type>",
             '<ListOfAllocations varName="listOfAllocations">',
-            "<Allocation>"
+            "<Allocation>",
             # Replace with your own accountIds
-            ,
             "<acct>DU119915</acct>",
             "<amount>60.0</amount>",
             "</Allocation>",
-            "<Allocation>"
+            "<Allocation>",
             # Replace with your own accountIds
-            ,
             "<acct>DU119916</acct>",
             "<amount>40.0</amount>",
             "</Allocation>",
@@ -94,15 +89,13 @@ class FaAllocationSamples(Object):
             "<name>Percent_60_40</name>",
             "<type>1</type>",
             '<ListOfAllocations varName="listOfAllocations">',
-            "<Allocation>"
+            "<Allocation>",
             # Replace with your own accountIds
-            ,
             "<acct>DU119915</acct>",
             "<amount>60.0</amount>",
             "</Allocation>",
-            "<Allocation>"
+            "<Allocation>",
             # Replace with your own accountIds
-            ,
             "<acct>DU119916</acct>",
             "<amount>40.0</amount>",
             "</Allocation>",
@@ -112,15 +105,13 @@ class FaAllocationSamples(Object):
             "<name>Ratios_2_1</name>",
             "<type>2</type>",
             '<ListOfAllocations varName="listOfAllocations">',
-            "<Allocation>"
+            "<Allocation>",
             # Replace with your own accountIds
-            ,
             "<acct>DU119915</acct>",
             "<amount>2.0</amount>",
             "</Allocation>",
-            "<Allocation>"
+            "<Allocation>",
             # Replace with your own accountIds
-            ,
             "<acct>DU119916</acct>",
             "<amount>1.0</amount>",
             "</Allocation>",
