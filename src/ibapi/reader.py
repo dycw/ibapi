@@ -7,8 +7,6 @@ It will read the packets from the wire, use the low level IB messaging to
 remove the size prefix and put the rest in a Queue.
 """
 
-from __future__ import annotations
-
 import logging
 from threading import Thread
 

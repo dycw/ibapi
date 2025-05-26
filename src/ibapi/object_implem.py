@@ -2,8 +2,6 @@
 and conditions of the IB API Non-Commercial License or the IB API Commercial License, as applicable.
 """
 
-from __future__ import annotations
-
 
 class Object:
     def __str__(self) -> str:

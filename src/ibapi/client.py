@@ -9,18 +9,16 @@ It takes care of almost everything:
 The user just needs to override EWrapper methods to receive the answers.
 """
 
-from __future__ import annotations
-
 import logging
 import queue
 import sys
-from typing import TYPE_CHECKING
 
 from ibapi import comm, decoder, reader
 from ibapi.comm import make_field, make_field_handle_empty
 from ibapi.common import *  # @UnusedWildImport
 from ibapi.connection import Connection
 from ibapi.const import MAX_MSG_LEN, NO_VALID_ID, UNSET_DOUBLE, UNSET_INTEGER
+from ibapi.contract import Contract
 from ibapi.errors import (
     BAD_LENGTH,
     BAD_MESSAGE,
@@ -30,8 +28,11 @@ from ibapi.errors import (
     NOT_CONNECTED,
     UPDATE_TWS,
 )
+from ibapi.execution import ExecutionFilter
 from ibapi.message import OUT
 from ibapi.order import COMPETE_AGAINST_BEST_OFFSET_UP_TO_MID, Order
+from ibapi.order_cancel import OrderCancel
+from ibapi.scanner import ScannerSubscription
 from ibapi.server_versions import (
     MAX_CLIENT_VER,
     MIN_CLIENT_VER,
@@ -128,12 +129,6 @@ from ibapi.utils import (
     isPegMidOrder,
     log_,
 )
-
-if TYPE_CHECKING:
-    from ibapi.contract import Contract
-    from ibapi.execution import ExecutionFilter
-    from ibapi.order_cancel import OrderCancel
-    from ibapi.scanner import ScannerSubscription
 
 # TODO: use pylint
 

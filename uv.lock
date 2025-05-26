@@ -64,7 +64,7 @@ wheels = [
 
 [[package]]
 name = "dycw-ibapi"
-version = "1.0.1"
+version = "1.0.2"
 source = { editable = "." }
 
 [package.dev-dependencies]
@@ -83,14 +83,14 @@ dev = [
 
 [[package]]
 name = "dycw-utilities"
-version = "0.125.5"
+version = "0.125.6"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/52/1c/0043f24962eb1759d46dc4a4c17f7ce7217587ff1938e7ee5462dc2656d9/dycw_utilities-0.125.5.tar.gz", hash = "sha256:aec992e778540e276a4a7b7f6ecd1e3f690d2a6232639ac8e3f2bda8b723c999", size = 292709, upload-time = "2025-05-26T02:51:22.031Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/28/32/be7799123452d0f8093f45eb1c46a8f2945fe654754dafc54e1d4c36cc0d/dycw_utilities-0.125.6.tar.gz", hash = "sha256:57377cdd679bcecd1fa01387ae68aef88a5afcca8d1eec1ba846a6a1d9285f42", size = 292670, upload-time = "2025-05-26T12:01:17.837Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/71/f0/9db5741a526f9f47f6149cc99fac5327bf304530726f128c5e900af680d4/dycw_utilities-0.125.5-py3-none-any.whl", hash = "sha256:207eb88d9b8aa7b6a00c5fa6e0903a09dd711d621b1c72152eb9b11089d8e788", size = 188992, upload-time = "2025-05-26T02:51:18.474Z" },
+    { url = "https://files.pythonhosted.org/packages/b0/a1/0210db5001bbc02860db4c4607ae74de5db20e528ed4a9865b230bfb7ab7/dycw_utilities-0.125.6-py3-none-any.whl", hash = "sha256:a1b1b78a6a3098409276178dbf528526014f5487ab6767ec00c88b059713eeae", size = 188988, upload-time = "2025-05-26T12:01:14.935Z" },
 ]
 
 [package.optional-dependencies]
@@ -258,14 +258,14 @@ wheels = [
 
 [[package]]
 name = "pytest-asyncio"
-version = "0.26.0"
+version = "1.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pytest" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/8e/c4/453c52c659521066969523e87d85d54139bbd17b78f09532fb8eb8cdb58e/pytest_asyncio-0.26.0.tar.gz", hash = "sha256:c4df2a697648241ff39e7f0e4a73050b03f123f760673956cf0d72a4990e312f", size = 54156, upload-time = "2025-03-25T06:22:28.883Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d0/d4/14f53324cb1a6381bef29d698987625d80052bb33932d8e7cbf9b337b17c/pytest_asyncio-1.0.0.tar.gz", hash = "sha256:d15463d13f4456e1ead2594520216b225a16f781e144f8fdf6c5bb4667c48b3f", size = 46960, upload-time = "2025-05-26T04:54:40.484Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/20/7f/338843f449ace853647ace35870874f69a764d251872ed1b4de9f234822c/pytest_asyncio-0.26.0-py3-none-any.whl", hash = "sha256:7b51ed894f4fbea1340262bdae5135797ebbe21d8638978e35d31c6d19f72fb0", size = 19694, upload-time = "2025-03-25T06:22:27.807Z" },
+    { url = "https://files.pythonhosted.org/packages/30/05/ce271016e351fddc8399e546f6e23761967ee09c8c568bbfbecb0c150171/pytest_asyncio-1.0.0-py3-none-any.whl", hash = "sha256:4f024da9f1ef945e680dc68610b52550e36590a67fd31bb3b4943979a1f90ef3", size = 15976, upload-time = "2025-05-26T04:54:39.035Z" },
 ]
 
 [[package]]

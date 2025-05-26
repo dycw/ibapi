@@ -6,7 +6,7 @@ and conditions of the IB API Non-Commercial License or the IB API Commercial Lic
 Just a thin wrapper around a socket.
 It allows us to keep some other info along with it.
 """
-from __future__ import annotations
+
 
 import logging
 import socket
