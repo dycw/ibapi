@@ -3,6 +3,8 @@
 - TWS API Stable for Mac/Unix
 - Version: API 10.30
 - Release Date: 2024-07-01
+- GitHub: https://interactivebrokers.github.io/
+- PyPI: https://pypi.org/project/dycw-ibapi/
 
 ## Installation Guide for TWS API Library
 
