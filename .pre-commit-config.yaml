@@ -22,6 +22,10 @@ repos:
         args: [--all-packages, --upgrade]
         stages: [pre-commit, pre-push]
   # linters
+  - repo: https://github.com/andreoliwa/nitpick
+    rev: v0.35.0
+    hooks:
+      - id: nitpick-check
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.10.0.1
     hooks:
