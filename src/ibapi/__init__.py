@@ -15,4 +15,4 @@ def get_version_string():
 
 
 __version__ = get_version_string()
-__qrt_version__ = "0.2.0"
+__qrt_version__ = "0.3.0"
