@@ -1,9 +1,0 @@
-# main
-click
-loguru
-requests
-tqdm
-
-# dev
-black
-ruff
